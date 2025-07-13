@@ -1,0 +1,17 @@
+@isTest
+private class RedditSyncServiceTest {
+    @isTest
+    static void testSyncPosts() {
+        Test.startTest();
+
+        HttpCalloutMock mock = new RedditMockCallout();
+        Test.setMock(HttpCalloutMock.class, mock);
+
+        RedditSyncService.syncPosts();
+
+        Test.stopTest();
+
+        List<Reddit_Post__c> results = [SELECT Title__c, Author_Fullame__c FROM Reddit_Post__c];
+        System.assert(!results.isEmpty(), 'Posts should have been created');
+    }
+}
