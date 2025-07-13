@@ -1,0 +1,10 @@
+@isTest
+global class RedditMockCallout implements HttpCalloutMock {
+    global HTTPResponse respond(HTTPRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setHeader('Content-Type', 'application/json');
+        res.setStatusCode(200);
+        res.setBody('{"data":{"children":[{"data":{"title":"Cute Puppy","author_fullname":"t2_example","thumbnail":"https://example.com/image.jpg","selftext":"Adorable puppy pic"}}]}}');
+        return res;
+    }
+}
