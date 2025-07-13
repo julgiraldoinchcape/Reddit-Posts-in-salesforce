@@ -1,0 +1,5 @@
+global class RedditSyncScheduler implements Schedulable {
+    global void execute(SchedulableContext sc) {
+        RedditSyncService.syncPosts();
+    }
+}
